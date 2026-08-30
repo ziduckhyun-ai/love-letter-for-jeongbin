@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💌 정빈아에게</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+        }
+
+        .letter {
+            background: #fffaf0;
+            padding: 45px 35px;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            animation: slideIn 0.8s ease-out;
+            border: 2px solid #ffb3d9;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .hearts-top {
+            font-size: 32px;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            color: #ff1493;
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #ff69b4;
+            font-size: 15px;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .content {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.9;
+            text-align: left;
+        }
+
+        .content p {
+            margin-bottom: 18px;
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .content p:nth-child(1) { animation-delay: 0.2s; }
+        .content p:nth-child(2) { animation-delay: 0.35s; }
+        .content p:nth-child(3) { animation-delay: 0.5s; }
+        .content p:nth-child(4) { animation-delay: 0.65s; }
+        .content p:nth-child(5) { animation-delay: 0.8s; }
+        .content p:nth-child(6) { animation-delay: 0.95s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .highlight {
+            color: #ff1493;
+            font-weight: 600;
+        }
+
+        .emoji {
+            font-size: 18px;
+        }
+
+        .signature-section {
+            margin-top: 35px;
+            text-align: right;
+        }
+
+        .signature {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 15px;
+            animation: fadeIn 0.6s ease-out 1.1s forwards;
+            opacity: 0;
+        }
+
+        .signature-name {
+            font-weight: 700;
+            color: #ff1493;
+            font-size: 18px;
+            margin-top: 8px;
+        }
+
+        .ps {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px dashed #ffb3d9;
+            color: #999;
+            font-size: 14px;
+            animation: fadeIn 0.6s ease-out 1.25s forwards;
+            opacity: 0;
+        }
+
+        .ps-text {
+            color: #333;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .letter {
+                padding: 35px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .content {
+                font-size: 15px;
+                line-height: 1.8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="letter">
+            <div class="header">
+                <div class="hearts-top">❤️ 💕 ❤️</div>
+                <h1>정빈아에게</h1>
+                <p class="subtitle">너를 사랑한다는 말</p>
+            </div>
+
+            <div class="content">
+                <p>정빈아 안녕 <span class="emoji">🙂</span></p>
+
+                <p>오늘 싸워서 너도 기분 안 좋을 거 알아. 근데 솔직하게 말하면 지금 너 생각만 자꾸 나. 너 없이는 이 모든 게 의미 없는 것 같아.</p>
+
+                <p>정빈아, 너 진짜 내 인생에서 제일 소중한 사람이야. 하루종일 너 생각하고, 너의 웃음이 내 최고의 행복이야 <span class="emoji">😊</span></p>
+
+                <p>가끔 싸우는 것도 있겠지만, 그럴수록 내가 너를 얼마나 사랑하는지 느껴져. 너와 함께 있는 시간이 제일 좋고, 너의 목소리를 들으면 모든 게 괜찮아져.</p>
+
+                <p>앞으로도 계속 이렇게 함께하고 싶어. 너와 더 많은 추억을 만들고 싶고, 너를 더 잘 안아주고 싶어 <span class="emoji">🤍</span></p>
+
+                <p><span class="highlight">정빈아, 너를 정말 사랑해.</span> 진짜로. 매 순간마다 <span class="emoji">❤️</span></p>
+
+                <div class="signature-section">
+                    <div class="signature">
+                        <p>너를 사랑하는</p>
+                        <div class="signature-name">너 올림</div>
+                    </div>
+                </div>
+
+                <div class="ps">
+                    <p>P.S. 빨리 봐줘... 너를 안고 싶어 <span class="emoji">🥺</span></p>
+                    <p class="ps-text">사랑해 정빈아. 진짜 많이.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
