@@ -19,7 +19,6 @@
             align-items: center;
             padding: 20px;
             font-family: 'Noto Sans KR', sans-serif;
-            overflow: hidden;
         }
 
         .container {
@@ -62,7 +61,7 @@
         h1 {
             color: #ff1493;
             font-size: 32px;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             font-weight: 700;
         }
 
@@ -116,62 +115,30 @@
             background: #ccc;
         }
 
-        .message {
-            color: #333;
-            font-size: 16px;
-            line-height: 1.8;
+        .hidden {
+            display: none !important;
+        }
+
+        .letter-content {
+            background: #ffe6f0;
+            padding: 30px;
+            border-radius: 10px;
             margin: 20px 0;
-            display: none;
-        }
-
-        .message.show {
-            display: block;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .final-message {
-            display: none;
-            animation: slideIn 0.8s ease-out;
-        }
-
-        .final-message.show {
-            display: block;
-        }
-
-        .final-message h2 {
-            color: #ff1493;
-            font-size: 28px;
-            margin: 20px 0;
-        }
-
-        .final-message p {
-            color: #333;
-            font-size: 16px;
-            line-height: 1.8;
-            margin: 15px 0;
             text-align: left;
         }
 
-        .final-message .letter-header {
+        .letter-content p {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 12px 0;
+        }
+
+        .letter-header {
             text-align: left;
             margin-bottom: 20px;
             color: #666;
-        }
-
-        .final-message .letter-content {
-            background: #ffe6f0;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
+            font-weight: 600;
         }
 
         .emoji-large {
@@ -180,15 +147,11 @@
         }
 
         .signature {
-            margin-top: 30px;
+            margin-top: 20px;
             text-align: right;
             color: #ff1493;
             font-weight: 700;
             font-size: 18px;
-        }
-
-        .hidden {
-            display: none !important;
         }
 
         @media (max-width: 500px) {
@@ -222,34 +185,34 @@
             <h1>정빈이에게</h1>
 
             <!-- 첫 번째 질문 -->
-            <div id="question1">
+            <div id="q1">
                 <p class="question-text">나 사랑해? ❤️</p>
                 <div class="button-container">
-                    <button class="btn yes-btn" onclick="goToQuestion2()">응 💕</button>
-                    <button class="btn no-btn" onclick="moveNoButton()">아니요</button>
+                    <button class="btn yes-btn" onclick="showQ2()">응 💕</button>
+                    <button class="btn no-btn" onclick="avoidNo()">아니요</button>
                 </div>
             </div>
 
             <!-- 두 번째 질문 -->
-            <div id="question2" class="hidden">
+            <div id="q2" class="hidden">
                 <p class="question-text">진짜 사랑해? ❤️</p>
                 <div class="button-container">
-                    <button class="btn yes-btn" onclick="goToQuestion3()">응 진짜!! 💕</button>
-                    <button class="btn no-btn" onclick="moveNoButton()">아니요</button>
+                    <button class="btn yes-btn" onclick="showQ3()">응 진짜!! 💕</button>
+                    <button class="btn no-btn" onclick="avoidNo()">아니요</button>
                 </div>
             </div>
 
             <!-- 세 번째 질문 -->
-            <div id="question3" class="hidden">
+            <div id="q3" class="hidden">
                 <p class="question-text">내가 선물 준비했는데 볼래? ❤️</p>
                 <div class="button-container">
-                    <button class="btn yes-btn" onclick="goToFinalMessage()">응 💕</button>
-                    <button class="btn no-btn" id="noBtn3" onclick="enlargeYesButton()">아니요</button>
+                    <button class="btn yes-btn" onclick="showLetter()">응 💕</button>
+                    <button class="btn no-btn" id="avoidBtn" onclick="avoidNo()">아니요</button>
                 </div>
             </div>
 
-            <!-- 최종 메시지 -->
-            <div id="finalMessage" class="hidden final-message">
+            <!-- 편지 -->
+            <div id="letter" class="hidden">
                 <div class="emoji-large">💌</div>
                 
                 <div class="letter-content">
@@ -269,8 +232,7 @@
                     
                     <p>마지막으로 엄청 많이 사랑해 ❤️❤️❤️</p>
                     
-                    <p style="margin-top: 25px; text-align: right; font-weight: 700;">여보야</p>
-                    <p style="text-align: right; color: #ff1493;">-너 작품이-</p>
+                    <p class="signature">여보야<br>-너 작품이-</p>
                 </div>
 
                 <div class="emoji-large">❤️ 💕 ❤️</div>
@@ -279,48 +241,34 @@
     </div>
 
     <script>
-        let noButtonClickCount = 0;
-        let yesButtonSize = 30;
+        let yesSize = 30;
 
-        function moveNoButton() {
-            const noBtn = document.querySelector('.no-btn');
-            const randomX = (Math.random() - 0.5) * 300;
-            const randomY = (Math.random() - 0.5) * 300;
-            noBtn.style.position = 'relative';
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
-            noButtonClickCount++;
-        }
-
-        function goToQuestion2() {
-            document.getElementById('question1').classList.add('hidden');
-            document.getElementById('question2').classList.remove('hidden');
-        }
-
-        function goToQuestion3() {
-            document.getElementById('question2').classList.add('hidden');
-            document.getElementById('question3').classList.remove('hidden');
-        }
-
-        function enlargeYesButton() {
-            const yesBtn = document.querySelector('#question3 .yes-btn');
-            const noBtn = document.getElementById('noBtn3');
+        function avoidNo() {
+            const btn = document.getElementById('avoidBtn');
+            if (!btn) return;
             
-            yesButtonSize += 15;
-            yesBtn.style.padding = (12 + (yesButtonSize / 30)) + 'px ' + (30 + (yesButtonSize / 30)) + 'px';
-            yesBtn.style.fontSize = (16 + (yesButtonSize / 30)) + 'px';
-            yesBtn.style.transform = 'scale(' + (1 + (yesButtonSize / 100)) + ')';
+            const randomX = (Math.random() - 0.5) * 400;
+            const randomY = (Math.random() - 0.5) * 400;
             
-            // 아니요 버튼을 화면 끝으로 날림
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = Math.random() * window.innerWidth + 'px';
-            noBtn.style.top = Math.random() * window.innerHeight + 'px';
-            noBtn.style.opacity = '0.5';
+            btn.style.position = 'fixed';
+            btn.style.left = (Math.random() * window.innerWidth) + 'px';
+            btn.style.top = (Math.random() * window.innerHeight) + 'px';
+            btn.style.zIndex = '999';
         }
 
-        function goToFinalMessage() {
-            document.getElementById('question3').classList.add('hidden');
-            document.getElementById('finalMessage').classList.remove('hidden');
+        function showQ2() {
+            document.getElementById('q1').classList.add('hidden');
+            document.getElementById('q2').classList.remove('hidden');
+        }
+
+        function showQ3() {
+            document.getElementById('q2').classList.add('hidden');
+            document.getElementById('q3').classList.remove('hidden');
+        }
+
+        function showLetter() {
+            document.getElementById('q3').classList.add('hidden');
+            document.getElementById('letter').classList.remove('hidden');
         }
     </script>
 </body>
